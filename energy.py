@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 @st.cache()
-def load_energy_data(data_init,data_end):
+def load_data(data_init,data_end):
     renewal_ratio_nan = 0.5
     df = pd.read_csv('energy_data.csv', index_col=0, parse_dates=True,dtype='float64')
     df = df.loc[data_init:data_end]
@@ -18,8 +18,8 @@ def load_energy_data(data_init,data_end):
         }, inplace=True)
     return df
 
-def energy_global_pie(data_init,data_end,is_table=False,is_plot=True):
-    df = load_energy_data(data_init,data_end)
+def total_pie(data_init,data_end,is_table=False,is_plot=True):
+    df = load_data(data_init,data_end)
     df_sum = pd.DataFrame()
     column_name = 'Energia/kWh'
     title = f'Balanço energético de {data_init} a {data_end}'
@@ -55,8 +55,8 @@ def energy_global_pie(data_init,data_end,is_table=False,is_plot=True):
     else: 
         st.write("Periodo sem dados.")
 
-def energy_global(data_init,data_end,is_table,is_plot):
-    df = load_energy_data(data_init,data_end)
+def time_series(data_init,data_end,is_table,is_plot):
+    df = load_data(data_init,data_end)
     title = f'Evolução energética de {data_init} a {data_end}'
     if (df.size > 0):
         if is_plot:

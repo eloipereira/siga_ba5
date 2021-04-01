@@ -6,8 +6,7 @@ import time
 import shelve
 from datetime import datetime
 from passlib.hash import sha256_crypt
-from geral import *
-from energia import *
+import energy
 from intro import *
 
 
@@ -29,11 +28,11 @@ with st.sidebar.beta_expander('Configuração'):
     is_plot = st.checkbox('Mostrar gráficos?', value=True)
 
 if area == 'Geral':
-    geral(data_init,data_end,is_table,is_plot)
+    energy.total_pie(data_init,data_end,is_table,is_plot)
 
 if area == 'Energia':
-    energy_global_pie(data_init,data_end,is_table,is_plot)
-    energy_global(data_init,data_end,is_table,is_plot)
+    energy.total_pie(data_init,data_end,is_table,is_plot)
+    energy.time_series(data_init,data_end,is_table,is_plot)
 
 if area == 'Emissões':
     st.empty()
