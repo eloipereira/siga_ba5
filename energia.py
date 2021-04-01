@@ -22,7 +22,7 @@ def energy_global_pie(data_init,data_end,is_table=False,is_plot=True):
     df = load_energy_data(data_init,data_end)
     df_sum = pd.DataFrame()
     column_name = 'Energia/kWh'
-    title = f'Balanço energetico de {data_init} a {data_end}'
+    title = f'Balanço energético de {data_init} a {data_end}'
     df_sum[column_name] = df.sum()
     df_sum.index.name = 'Variável'
     if (df.size > 0): 
@@ -30,9 +30,16 @@ def energy_global_pie(data_init,data_end,is_table=False,is_plot=True):
             fig = px.pie(df_sum,
                 values=column_name,
                 names=df_sum.index,
-                title=title,
-                color=df_sum.index)
+                color=df_sum.index
+            )
             fig.update_layout(
+                title=dict(
+                    text=title,
+                    xanchor="center",
+                    yanchor="top",
+                    x=0.5,
+                    y=0.93
+                ),
                 legend=dict(
                     orientation="h",
                     yanchor="top",
@@ -50,15 +57,21 @@ def energy_global_pie(data_init,data_end,is_table=False,is_plot=True):
 
 def energy_global(data_init,data_end,is_table,is_plot):
     df = load_energy_data(data_init,data_end)
-    title = f'Balanço energetico de {data_init} a {data_end}'
+    title = f'Evolução energética de {data_init} a {data_end}'
     if (df.size > 0):
         if is_plot:
-            fig = px.area(df,
-                title=title)
+            fig = px.area(df)
             fig.update_yaxes(
                 title_text = "Energia/kWh" 
             )
             fig.update_layout(
+                title=dict(
+                    text=title,
+                    xanchor="center",
+                    yanchor="top",
+                    x=0.5,
+                    y=0.93
+                ),
                 legend_title = '',
                 legend=dict(
                     orientation="h",

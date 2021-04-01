@@ -24,7 +24,7 @@ two_years_ago = datetime(today.year-2,today.month,today.day)
 data_init = st.sidebar.date_input('Data inicial',value=two_years_ago)
 data_end = st.sidebar.date_input('Data final',value=today)
 
-with st.sidebar.beta_expander('Configuration'):
+with st.sidebar.beta_expander('Configuração'):
     is_table = st.checkbox('Mostrar tabelas?', value=False)
     is_plot = st.checkbox('Mostrar gráficos?', value=True)
 
