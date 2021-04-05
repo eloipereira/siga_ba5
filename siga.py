@@ -35,7 +35,8 @@ if area == 'Energia':
     energy.time_series(data_init,data_end,is_table,is_plot)
 
 if area == 'Emissões':
-    st.empty()
+    emissions.total_pie(data_init,data_end,is_table,is_plot)
+    emissions.time_series(data_init,data_end,is_table,is_plot)
 
 if area == 'Financiamento':
     st.empty()
