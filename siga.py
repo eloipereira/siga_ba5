@@ -7,6 +7,7 @@ import shelve
 from datetime import datetime
 from passlib.hash import sha256_crypt
 import energy
+import emissions
 from intro import *
 
 
