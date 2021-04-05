@@ -6,7 +6,6 @@ import plotly.express as px
 def load_data(data_init,data_end):
     df = pd.read_csv('emissions.csv', index_col=0, parse_dates=True,dtype='float64')
     df = df.loc[data_init:data_end]
-    df.drop(columns = ['GEE_Emissions'], inplace=True)
     df.index.name = 'Tempo/mês'
     df.rename(
         columns = {
