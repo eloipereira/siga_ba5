@@ -40,6 +40,7 @@ if area == 'Emissões':
     emissions.time_series(data_init,data_end,is_table,is_plot)
 
 if area == 'Financiamento':
+    st.write("Ola Delgado")
     st.empty()
 
 if area == 'Info':
