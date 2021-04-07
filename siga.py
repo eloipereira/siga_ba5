@@ -8,6 +8,9 @@ from datetime import datetime
 from passlib.hash import sha256_crypt
 import energy 
 import emissions
+import water
+import waste_water
+import urban_waste
 from intro import *
 
 
@@ -16,7 +19,7 @@ from intro import *
 st.title("SIGA-BA5")
 st.header("Sistema Integrado de Gestão Ambiental da BA5")
     
-area = st.sidebar.radio('Seleccionar área:', ['Geral', 'Energia', 'Emissões', 'Floresta', 'Financiamento', 'Info'])
+area = st.sidebar.radio('Seleccionar área:', ['Geral', 'Energia', 'Emissões', 'Água', 'Água Residual', 'Resíduos', 'Floresta', 'Financiamento', 'Info'])
 
 today = datetime.today()
 two_years_ago = datetime(today.year-2,today.month,today.day)
@@ -38,6 +41,16 @@ if area == 'Energia':
 if area == 'Emissões':
     #emissions.total_pie(data_init,data_end,is_table,is_plot)
     emissions.time_series(data_init,data_end,is_table,is_plot)
+
+if area == 'Água':
+    water.total_pie(data_init,data_end,is_table,is_plot)
+    water.time_series(data_init,data_end,is_table,is_plot)
+
+if area == 'Água Residual':
+    waste_water.time_series(data_init,data_end,is_table,is_plot)
+    
+if area == 'Resíduos':
+    urban_waste.time_series(data_init,data_end,is_table,is_plot)
 
 if area == 'Financiamento':
     st.write("Ola Delgado")
