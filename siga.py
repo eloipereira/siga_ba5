@@ -16,10 +16,16 @@ from intro import *
 
 # Dashboard starts here
 
-st.title("SIGA-BA5")
-st.header("Sistema Integrado de Gestão Ambiental da BA5")
-    
-area = st.sidebar.radio('Seleccionar área:', ['Geral', 'Energia', 'Emissões', 'Água', 'Água Residual', 'Resíduos', 'Floresta', 'Financiamento', 'Info'])
+col1, col2 = st.beta_columns((1,5))
+with col1:
+    st.image('ba5brasao2712.png', use_column_width=True)
+with col2:
+    st.markdown('''
+    # SIGA-BA5
+    ## Sistema Integrado de Gestão Ambiental
+    ''')
+
+area = st.sidebar.radio('Seleccionar área:', ['Introdução', 'Energia', 'Emissões', 'Água', 'Água Residual', 'Resíduos', 'Floresta', 'Financiamento'])
 
 today = datetime.today()
 two_years_ago = datetime(today.year-2,today.month,today.day)
@@ -31,8 +37,7 @@ with st.sidebar.beta_expander('Configuração'):
     is_table = st.checkbox('Mostrar tabelas?', value=False)
     is_plot = st.checkbox('Mostrar gráficos?', value=True)
 
-if area == 'Geral':
-    energy.total_pie(data_init,data_end,is_table,is_plot)
+st.markdown(f'### {area}')
 
 if area == 'Energia':
     energy.total_pie(data_init,data_end,is_table,is_plot)
@@ -52,10 +57,12 @@ if area == 'Água Residual':
 if area == 'Resíduos':
     urban_waste.time_series(data_init,data_end,is_table,is_plot)
 
-if area == 'Financiamento':
-    st.write("Ola Delgado")
-    st.empty()
+if area == 'Floresta':
+    st.write("Em implementação...")
 
-if area == 'Info':
+if area == 'Financiamento':
+    st.write("Em implementação...")
+
+if area == 'Introdução':
     intro()
 
