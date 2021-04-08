@@ -18,7 +18,7 @@ from intro import *
 
 col1, col2 = st.beta_columns((1,5))
 with col1:
-    st.image('ba5brasao2712.png', use_column_width=True)
+    st.image('ba5brasao2712.png', width=100)
 with col2:
     st.markdown('''
     # SIGA-BA5
