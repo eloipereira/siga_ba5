@@ -1,10 +1,15 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import configparser
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+
 
 @st.cache()
 def load_data(data_init,data_end):
-    df = pd.read_csv('urban_solid_waste.csv', index_col=0, parse_dates=True,dtype='float64')
+    df = pd.read_csv(config['datasets']['urban_solid_waste'], index_col=0, parse_dates=True,dtype='float64')
     df = df.loc[data_init:data_end]
     df.index.name = 'Tempo/mês'
     df.rename(

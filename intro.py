@@ -19,15 +19,15 @@ def intro():
     with col2:
         st.image('certificados.png')
 
-    st.markdown('''
-        ### Utilização do dashboard
+    # st.markdown('''
+    #     ### Utilização do dashboard
 
-        * Seleccione o descritor a analisar na barra lateral esquerda
+    #     * Seleccione o descritor a analisar na barra lateral esquerda
 
-        * Seleccione o intervalo pretendido
+    #     * Seleccione o intervalo pretendido
 
-        * No campo "Configuração" seleccione opções extra de visualização
+    #     * No campo "Configuração" seleccione opções extra de visualização
 
-    ''')
+    # ''')
 
     

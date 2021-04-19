@@ -1,11 +1,15 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import configparser
+
+config = configparser.ConfigParser()
+config.read('config.ini')
 
 @st.cache()
 def load_data(data_init,data_end):
     renewal_ratio_nan = 0.5
-    df = pd.read_csv('energy_data.csv', index_col=0, parse_dates=True,dtype='float64')
+    df = pd.read_csv(config['datasets']['energy'], index_col=0, parse_dates=True,dtype='float64')
     df = df.loc[data_init:data_end]
     df['renewal_energy_purchased'].fillna(df['electric_energy_purchased']*renewal_ratio_nan,inplace=True)
     df['Não-renovável fornecida'] = df['electric_energy_purchased'] - df['renewal_energy_purchased']
